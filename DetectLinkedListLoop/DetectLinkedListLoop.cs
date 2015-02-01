@@ -10,7 +10,19 @@ namespace DetectLinkedListLoop {
     public static class DetectLinkedListLoop {
 
         public static bool HasLoop( this SinglyLinkedList linkedList ) {
-            throw new NotImplementedException();
+            SinglyLinkedListNode slow = linkedList.Head;
+            SinglyLinkedListNode fast = linkedList.Head;
+
+            while( fast != null && fast.Next != null ) {
+                slow = slow.Next;
+                fast = fast.Next.Next;
+
+                if( slow == fast ) {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
