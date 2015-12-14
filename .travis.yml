@@ -1,0 +1,8 @@
+language: csharp
+solution: DetectLinkedListLoop.sln
+install:
+  - nuget restore DetectLinkedListLoop.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -ExcludeVersion
+script:
+  - xbuild /p:Configuration=Release DetectLinkedListLoop.sln
+  - mono ./NUnit.Runners/tools/nunit-console.exe ./DetectLinkedListLoopTests/bin/Release/DetectLinkedListLoopTests.dll
